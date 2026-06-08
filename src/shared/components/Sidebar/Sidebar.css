@@ -1,29 +1,31 @@
 .sidebar {
-  width: 240px;
+  width: 250px;
   height: 100vh;
 
   position: fixed;
   left: 0;
   top: 0;
 
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(15px);
+  background: linear-gradient(180deg, #0f172a, #0b1220);
+  backdrop-filter: blur(18px);
 
   display: flex;
   flex-direction: column;
 
   border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 12px;
 }
 
 /* TOP */
 .top {
-  padding: 18px;
+  padding: 16px;
 }
 
 .logo {
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 800;
   color: #38bdf8;
+  letter-spacing: 1px;
 }
 
 /* PROFILE */
@@ -35,11 +37,23 @@
   gap: 10px;
   align-items: center;
 
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
 
   text-decoration: none;
   color: white;
+
+  transition: 0.2s;
+}
+
+.profile:hover {
+  background: rgba(56,189,248,0.12);
+  transform: translateY(-1px);
+}
+
+.profile.active {
+  background: rgba(56,189,248,0.18);
+  border: 1px solid rgba(56,189,248,0.3);
 }
 
 .avatar {
@@ -47,13 +61,16 @@
   height: 40px;
 
   border-radius: 50%;
-  background: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  font-weight: bold;
 }
 
+/* TEXT */
 .name {
   font-weight: 600;
 }
@@ -63,6 +80,36 @@
   opacity: 0.7;
 }
 
+/* MENU */
+.menu {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 10px;
+}
+
+.menu-item {
+  padding: 10px 12px;
+  border-radius: 10px;
+
+  text-decoration: none;
+  color: #cbd5e1;
+
+  transition: 0.2s;
+}
+
+.menu-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+.menu-item.active {
+  background: rgba(56,189,248,0.18);
+  color: white;
+  font-weight: 600;
+}
+
 /* spacer */
 .spacer {
   flex: 1;
@@ -70,14 +117,22 @@
 
 /* logout */
 .logout {
-  margin: 15px;
+  margin: 12px;
   padding: 12px;
 
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
 
-  background: #ef4444;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
   color: white;
 
   cursor: pointer;
+
+  font-weight: 600;
+
+  transition: 0.2s;
+}
+
+.logout:hover {
+  filter: brightness(1.1);
 }

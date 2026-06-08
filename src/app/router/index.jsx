@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import AdminManagementPage from "../../features/admin-management/pages/AdminManagementPage";
 import LandingPage from "../../features/landing/pages/LandingPage";
 
 import LoginPage from "../../features/auth/pages/LoginPage";
@@ -34,7 +34,10 @@ function AppRouter() {
           <Route index element={<DashboardHome />} />
           <Route path="profile" element={<ProfilePage />} />
         </Route>
-
+<Route
+  path="/app/admins"
+  element={<AdminManagementPage />}
+/>
         <Route path="*" element={<NotFound />} />
 
       </Routes>

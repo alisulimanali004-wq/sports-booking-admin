@@ -11,3 +11,15 @@ body {
   background: var(--light);
   color: var(--dark);
 }
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #0b1220;
+}
+
+/* هذا هو المحتوى الرئيسي */
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  width: 100%;
+}

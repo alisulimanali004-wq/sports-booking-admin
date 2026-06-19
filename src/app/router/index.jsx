@@ -3,11 +3,8 @@ import AdminManagementPage from "../../features/admin-management/pages/AdminMana
 import LandingPage from "../../features/landing/pages/LandingPage";
 
 import LoginPage from "../../features/auth/pages/LoginPage";
-import OtpPage from "../../features/auth/pages/OtpPage";
-
+import ResetPasswordPage from "../../features/auth/pages/ResetPasswordPage";
 import ForgotPasswordPage from "../../features/auth/pages/ForgotPasswordPage";
-import ChangePasswordPage from "../../features/auth/pages/ChangePasswordPage";
-
 import DashboardLayout from "../../layouts/DashboardLayout";
 
 import DashboardHome from "../../features/dashboard/pages/DashboardHome";
@@ -25,9 +22,11 @@ function AppRouter() {
 
         {/* AUTH */}
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/otp" element={<OtpPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/change-password" element={<ChangePasswordPage />} />
+      <Route
+path="/reset-password"
+element={<ResetPasswordPage />}
+/>
 
         {/* DASHBOARD SYSTEM */}
         <Route path="/app" element={<DashboardLayout />}>

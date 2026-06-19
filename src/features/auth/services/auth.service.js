@@ -1,35 +1,21 @@
-// MOCK AUTH SERVICE
+import apiClient from "../../../shared/services/apiClient";
 
-export const login = async (data) => {
-  console.log("Mock Login:", data);
-
-  return {
-    success: true,
-    token: "mock-token",
-    user: data,
-  };
+// LOGIN
+export const login = (data) => {
+  return apiClient.post("/admin/login", data);
 };
 
-export const verifyOtp = async (data) => {
-  console.log("Mock OTP:", data);
-
-  return {
-    success: true,
-  };
+// FORGOT PASSWORD
+export const forgotPassword = (data) => {
+  return apiClient.post("/auth/forgot-password", data);
 };
 
-export const forgotPassword = async (data) => {
-  console.log("Mock Forgot Password:", data);
-
-  return {
-    success: true,
-  };
+// RESET PASSWORD
+export const resetPassword = (data) => {
+  return apiClient.post("/auth/reset-password", data);
 };
 
-export const changePassword = async (data) => {
-  console.log("Mock Change Password:", data);
-
-  return {
-    success: true,
-  };
+// LOGOUT
+export const logout = () => {
+  return apiClient.post("/admin/logout");
 };

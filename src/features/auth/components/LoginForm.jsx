@@ -1,19 +1,43 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../services/auth.service";
-import { Link } from "react-router-dom";
+
 function LoginForm() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    await login({ email, password });
+    try {
+      setLoading(true);
+      setError("");
 
-    navigate("/otp");
+      const res = await login({
+        email,
+        password,
+      });
+
+      if (res?.data?.success) {
+        const token = res.data.data.accessToken;
+
+        // 🔥 save token
+        localStorage.setItem("accessToken", token);
+
+        navigate("/app");
+      } else {
+        setError("Login failed");
+      }
+    } catch (err) {
+      setError("Invalid email or password");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -22,6 +46,7 @@ function LoginForm() {
         className="auth-input"
         type="email"
         placeholder="Email address"
+        value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
 
@@ -29,19 +54,25 @@ function LoginForm() {
         className="auth-input"
         type="password"
         placeholder="Password"
+        value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button className="auth-button" type="submit">
-        Sign in
+      <button className="auth-button" type="submit" disabled={loading}>
+        {loading ? "Signing in..." : "Sign in"}
       </button>
-<div className="auth-links">
-  <Link to="/forgot-password">
-    Forgot Password?
-  </Link>
-</div>
-      
-    
+
+      {error && (
+        <p style={{ color: "red", fontSize: "13px" }}>
+          {error}
+        </p>
+      )}
+
+      <div className="auth-links">
+        <Link to="/forgot-password">
+          Forgot Password?
+        </Link>
+      </div>
     </form>
   );
 }
